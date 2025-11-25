@@ -1,42 +1,95 @@
-/* RESET */
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif;}
-body { background:#f8f8f8; }
-
-/* HEADER */
-header {
-    background: #004d18;
-    color: white;
-    padding: 12px 0;
-    border-bottom: 3px solid gold;
+/* ====== WARNA UTAMA ====== */
+:root {
+  --black: #000000;
+  --gold: #D4AF37;
+  --green: #2ECC71;
+  --white: #FFFFFF;
+  --soft-black: #111111;
+  --soft-gold: #c9a231;
 }
-header .container { width:90%; margin:auto; display:flex; justify-content:space-between; }
-.logo { font-size:20px; font-weight:bold; }
-.contact { font-size:14px; }
 
-/* RUNNING TEXT */
-.running-text { background: gold; color: black; padding:8px 0; font-weight:bold; }
+/* ====== BODY ====== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--black);
+  color: var(--white);
+}
 
-/* HERO */
-.hero { position:relative; height:450px; overflow:hidden; }
-.hero img { width:100%; height:450px; object-fit:cover; }
-.hero .overlay { position:absolute; top:0; left:0; width:100%; height:450px; background: rgba(0,0,0,0.5);}
-.hero-text { position:absolute; bottom:40px; left:40px; color:white; }
-.hero-text h1 { font-size:36px; margin-bottom:10px; }
+/* ====== HEADER ====== */
+header {
+  padding: 16px 20px;
+  background: var(--soft-black);
+  text-align: center;
+  border-bottom: 2px solid var(--gold);
+}
 
-/* SECTIONS */
-.section { padding:50px 0; }
-.container { width:90%; margin:auto; }
-.section-title { text-align:center; margin-bottom:30px; font-size:26px; color:#004d18; font-weight:bold; }
+header h1 {
+  color: var(--gold);
+  margin: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-/* FITUR */
-.fitur-wrapper { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; }
-.fitur-card { background:white; width:300px; border-radius:10px; box-shadow:0 0 8px #ccc; overflow:hidden; text-align:center; padding-bottom:10px; }
-.fitur-card img { width:100%; height:180px; object-fit:cover; }
-.fitur-card h3 { margin:10px 0 5px; }
+/* ====== RUNTEKS ====== */
+.runteks-wrap {
+  background: var(--green);
+  color: var(--black);
+  padding: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--gold);
+}
 
-/* GALERI */
-.galeri-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; }
-.galeri-grid img { width:100%; border-radius:10px; }
+/* ====== SECTION TITLE ====== */
+section h2 {
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-/* FOOTER */
-footer { padding:12px 0; text-align:center; background:#000; color:white; margin-top:40px; }
+/* ====== CONTENT SECTION ====== */
+.banner,
+.agenda {
+  padding: 18px;
+  background: var(--soft-black);
+  margin: 16px;
+  border-radius: 10px;
+  border: 1px solid var(--soft-gold);
+}
+
+/* ====== BANNER IMAGE ====== */
+.banner img {
+  max-width: 360px;
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+/* ====== AGENDA LIST ====== */
+ul li {
+  background: #0f0f0f;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border-left: 4px solid var(--green);
+  list-style: none;
+  color: var(--white);
+}
+
+/* ====== FOOTER ====== */
+footer {
+  margin-top: 25px;
+  padding: 15px;
+  text-align: center;
+  background: var(--soft-black);
+  border-top: 2px solid var(--gold);
+  color: var(--gold);
+}

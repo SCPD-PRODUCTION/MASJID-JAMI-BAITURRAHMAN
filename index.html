@@ -1,43 +1,104 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MASJID BAITURRAHMAN</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- RUNTEXT -->
-    <div class="running-text">
-        <marquee id="runteks">MASJID JAMI BAITURRAHMAN</marquee>
-    </div>
-
-    <!-- HEADER -->
+    <!-- ================= HEADER ================= -->
     <header>
-        <h1>MASJID BAITURRAHMAN</h1>
-        <p>Kontak: 0858-1065-2185</p>
+        <div class="container">
+            <div class="logo">
+                MASJID BAITURRAHMAN
+            </div>
+            <div class="contact">
+                Kontak: 08xxxxxxxxxx
+            </div>
+        </div>
     </header>
 
-    <!-- FOTO MASJID -->
-    <section class="image-section">
-        <img id="masjidPhoto" src="default.jpg" alt="Foto Masjid">
+    <!-- ================= RUNNING TEXT ================= -->
+    <marquee id="runningText" class="running-text">
+        MASJID JAMI BAITURRAHMAN
+    </marquee>
+
+    <!-- ================= HERO BANNER ================= -->
+    <section class="hero">
+        <img id="bannerImage" src="assets/default-banner.jpg" alt="Banner Masjid">
+        <div class="overlay"></div>
+        <div class="hero-text">
+            <h1>Selamat Datang di Masjid Baiturrahman</h1>
+            <p>Masjid Besar Kebanggaan Umat Muslim</p>
+        </div>
     </section>
 
-    <!-- MAP -->
-    <section class="map-container">
-        <iframe id="masjidMap"
-            src="https://www.google.com/maps/embed?pb="
-            allowfullscreen loading="lazy"></iframe>
+    <!-- ================= FITUR ================= -->
+    <section class="fitur section">
+        <div class="container">
+            <h2 class="section-title">Layanan & Informasi</h2>
+            <div id="fiturList" class="fitur-wrapper">
+                <!-- Contoh tampilan default (nanti auto fetch API) -->
+                <div class="fitur-card">
+                    <img src="assets/default-fitur.jpg">
+                    <h3>Kajian Rutin</h3>
+                    <p>Kajian ilmu setiap ba'da maghrib</p>
+                </div>
+
+                <div class="fitur-card">
+                    <img src="assets/default-fitur.jpg">
+                    <h3>Pengumuman</h3>
+                    <p>Informasi kegiatan jamaah</p>
+                </div>
+
+                <div class="fitur-card">
+                    <img src="assets/default-fitur.jpg">
+                    <h3>Live Streaming</h3>
+                    <p>Siaran langsung acara masjid</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ================= GALERI ================= -->
+    <section class="galeri section">
+        <div class="container">
+            <h2 class="section-title">Galeri Masjid</h2>
+            <div id="galeriWrapper" class="galeri-grid">
+                <!-- Default contoh -->
+                <img src="assets/default-gallery.jpg">
+                <img src="assets/default-gallery.jpg">
+                <img src="assets/default-gallery.jpg">
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAP ================= -->
+    <section class="map section">
+        <div class="container">
+            <h2 class="section-title">Lokasi</h2>
+            <iframe 
+                id="mapEmbed"
+                src="https://www.google.com/maps/embed?pb="
+                width="100%" 
+                height="350" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
     <footer>
-        © Copyright by scpd_production
+        © scpd_production
     </footer>
 
-    <script src="runteks.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

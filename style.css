@@ -1,63 +1,42 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: white;
-}
-
-/* RUNTEKS */
-.running-text {
-    background: #006400;
-    color: gold;
-    padding: 5px 0;
-}
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif;}
+body { background:#f8f8f8; }
 
 /* HEADER */
 header {
-    text-align: center;
-    padding: 20px;
-    background: #fff;
-    color: black;
-    border-bottom: 3px solid #006400;
+    background: #004d18;
+    color: white;
+    padding: 12px 0;
+    border-bottom: 3px solid gold;
 }
+header .container { width:90%; margin:auto; display:flex; justify-content:space-between; }
+.logo { font-size:20px; font-weight:bold; }
+.contact { font-size:14px; }
 
-header h1 {
-    margin: 0;
-    color: #006400;
-}
+/* RUNNING TEXT */
+.running-text { background: gold; color: black; padding:8px 0; font-weight:bold; }
 
-/* IMAGE SECTION */
-.image-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-}
+/* HERO */
+.hero { position:relative; height:450px; overflow:hidden; }
+.hero img { width:100%; height:450px; object-fit:cover; }
+.hero .overlay { position:absolute; top:0; left:0; width:100%; height:450px; background: rgba(0,0,0,0.5);}
+.hero-text { position:absolute; bottom:40px; left:40px; color:white; }
+.hero-text h1 { font-size:36px; margin-bottom:10px; }
 
-.image-section img {
-    width: 90%;
-    max-width: 900px;
-    border: 5px solid gold;
-    border-radius: 10px;
-}
+/* SECTIONS */
+.section { padding:50px 0; }
+.container { width:90%; margin:auto; }
+.section-title { text-align:center; margin-bottom:30px; font-size:26px; color:#004d18; font-weight:bold; }
 
-/* MAP */
-.map-container {
-    width: 100%;
-    padding: 20px;
-}
+/* FITUR */
+.fitur-wrapper { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; }
+.fitur-card { background:white; width:300px; border-radius:10px; box-shadow:0 0 8px #ccc; overflow:hidden; text-align:center; padding-bottom:10px; }
+.fitur-card img { width:100%; height:180px; object-fit:cover; }
+.fitur-card h3 { margin:10px 0 5px; }
 
-.map-container iframe {
-    width: 100%;
-    height: 350px;
-    border: 3px solid #000;
-}
+/* GALERI */
+.galeri-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; }
+.galeri-grid img { width:100%; border-radius:10px; }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #006400;
-    color: gold;
-    font-weight: bold;
-}
+footer { padding:12px 0; text-align:center; background:#000; color:white; margin-top:40px; }

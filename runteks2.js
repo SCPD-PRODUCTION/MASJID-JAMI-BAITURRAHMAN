@@ -28,3 +28,5 @@ function showNextSholat() {
 // Start
 showNextSholat();
 setInterval(showNextSholat, 4000);
+            clearInterval(interval);
+            window.location.href = "runteks3.html";

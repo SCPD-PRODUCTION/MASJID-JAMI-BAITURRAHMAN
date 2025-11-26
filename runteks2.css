@@ -36,8 +36,8 @@ nav a:hover {
 #runteks2 {
     width: 100%;
     height: 60px;
-    background: #000;
-    color: #fff;
+    background: black;
+    color: gold;
     position: relative;
     overflow: hidden;
     display: flex;

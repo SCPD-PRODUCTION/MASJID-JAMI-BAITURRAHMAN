@@ -1,95 +1,71 @@
-/* ====== WARNA UTAMA ====== */
-:root {
-  --black: #000000;
-  --gold: #D4AF37;
-  --green: #2ECC71;
-  --white: #FFFFFF;
-  --soft-black: #111111;
-  --soft-gold: #c9a231;
-}
-
-/* ====== BODY ====== */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: var(--black);
-  color: var(--white);
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
 }
 
-/* ====== HEADER ====== */
+/* Header */
 header {
-  padding: 16px 20px;
-  background: var(--soft-black);
-  text-align: center;
-  border-bottom: 2px solid var(--gold);
+    background: linear-gradient(90deg, #004d00, #0a7a0a);
+    color: white;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid gold;
 }
 
 header h1 {
-  color: var(--gold);
-  margin: 0;
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-/* ====== RUNTEKS ====== */
-.runteks-wrap {
-  background: var(--green);
-  color: var(--black);
-  padding: 12px;
-  font-size: 20px;
-  font-weight: bold;
-  border-bottom: 2px solid var(--gold);
+nav a {
+    margin-left: 20px;
+    color: gold;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* ====== SECTION TITLE ====== */
-section h2 {
-  color: var(--gold);
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+nav a:hover {
+    color: white;
 }
 
-/* ====== CONTENT SECTION ====== */
-.banner,
-.agenda {
-  padding: 18px;
-  background: var(--soft-black);
-  margin: 16px;
-  border-radius: 10px;
-  border: 1px solid var(--soft-gold);
+/* Runteks */
+#runteks-container {
+    background: black;
+    color: gold;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-/* ====== BANNER IMAGE ====== */
-.banner img {
-  max-width: 360px;
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 10px var(--gold);
+#runteks-text {
+    display: inline-block;
+    animation: berjalan 12s linear infinite;
 }
 
-/* ====== AGENDA LIST ====== */
-ul li {
-  background: #0f0f0f;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border-left: 4px solid var(--green);
-  list-style: none;
-  color: var(--white);
+@keyframes berjalan {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
 }
 
-/* ====== FOOTER ====== */
-footer {
-  margin-top: 25px;
-  padding: 15px;
-  text-align: center;
-  background: var(--soft-black);
-  border-top: 2px solid var(--gold);
-  color: var(--gold);
+/* Banner */
+#banner {
+    width: 100%;
+    height: 250px;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid gold;
+}
+
+#banner img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }

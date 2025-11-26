@@ -1,91 +1,31 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-}
-
-/* Header */
-header {
-    background: linear-gradient(90deg, #004d00, #0a7a0a);
-    color: white;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 4px solid gold;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-nav a {
-    margin-left: 20px;
-    color: gold;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: white;
-}
-
-/* RUNTEKS */
-#runteks-container {
-    width: 100%;
-    background: black;
-    color: gold;
-    padding: 10px 0;
-    overflow: hidden;
-    position: relative;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #runteks-text {
-    white-space: nowrap;
     position: absolute;
-    font-weight: bold;
-    font-size: 18px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
 }
 
-/* Animasi marquee */
+/* Mode teks DIAM (tengah) */
+.centered {
+    animation: none !important;
+}
+
+/* Mode MARQUEE (jalan) */
 .marquee {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     animation: marquee 8s linear infinite;
 }
 
-@keyframes marquee {
-    from { left: 100%; }
-    to { left: -100%; }
-}
-
-/* Fade effect untuk jadwal sholat */
+/* Efek pudar jadwal sholat */
 .fade {
-    animation: fadeEffect 1s ease-in-out;
+    opacity: 0;
+    transition: opacity 1s;
 }
 
-@keyframes fadeEffect {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Banner */
-#banner {
-    width: 100%;
-    height: 250px;
-    background: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid gold;
-}
-
-#banner img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
+@keyframes marquee {
+    0%   { left: 100%; }
+    100% { left: -200%; }
 }

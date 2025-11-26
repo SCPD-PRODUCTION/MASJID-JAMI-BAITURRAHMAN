@@ -1,66 +1,29 @@
-let jadwalSholat = [
-    "Subuh 04:30",
-    "Dhuha 06:00",
-    "Dzuhur 12:00",
-    "Ashar 15:15",
-    "Maghrib 17:45",
-    "Isya 19:00"
+// Data jadwal sholat
+const jadwalSholat = [
+    "Subuh : 04.30 WIB",
+    "Dzuhur : 11.45 WIB",
+    "Ashar : 15.10 WIB",
+    "Maghrib : 17.55 WIB",
+    "Isya : 19.10 WIB"
 ];
 
-let welcomeCount = 0;
-let currentSholat = 0;
+// Element teks
+const textBox = document.getElementById("runteks1-text");
 
-startWelcome();
+let index = 0;
 
-// =============================
-// MODE SELAMAT DATANG
-// =============================
-function startWelcome() {
-    runText.classList.remove("fade");
-    runText.classList.add("marquee");
-    runText.classList.remove("centered");
-    runText.innerText = welcomeText;
-
-    welcomeCount = 0;
-
-    let interval = setInterval(() => {
-        welcomeCount++;
-
-        if (welcomeCount >= 5) {
-            clearInterval(interval);
-            runText.classList.remove("marquee");
-            runText.classList.add("centered"); // ⬅ kembali ke tengah
-            startJadwal();
-        }
-    }, 8000);
-}
-
-// =============================
-// MODE JADWAL SHOLAT
-// =============================
-function startJadwal() {
-    currentSholat = 0;
-    changeSholat();
-
-    let sholatInterval = setInterval(() => {
-        currentSholat++;
-
-        if (currentSholat >= jadwalSholat.length) {
-            clearInterval(sholatInterval);
-            startWelcome();
-            return;
-        }
-
-        changeSholat();
-
-    }, 5000);
-}
-
-function changeSholat() {
-    runText.classList.add("fade");
-    runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[currentSholat];
+// Fungsi tampilkan data baru
+function showNextSholat() {
+    textBox.style.opacity = 0; // fade out
 
     setTimeout(() => {
-        runText.classList.remove("fade");
-    }, 5000);
+        textBox.innerText = jadwalSholat[index];
+        textBox.style.opacity = 1; // fade in
+
+        index = (index + 1) % jadwalSholat.length;
+    }, 1000);
 }
+
+// Start
+showNextSholat();
+setInterval(showNextSholat, 3500);

@@ -1,41 +1,66 @@
-const jadwal = [
-    "SUBUH 04:31",
-    "DZUHUR 11:49",
-    "ASHAR 15:13",
-    "MAGHRIB 17:52",
-    "ISYA 19:02"
+let jadwalSholat = [
+    "Subuh 04:30",
+    "Dhuha 06:00",
+    "Dzuhur 12:00",
+    "Ashar 15:15",
+    "Maghrib 17:45",
+    "Isya 19:00"
 ];
 
-let idx = 0;
-const box = document.getElementById("jadwalBox");
+let welcomeCount = 0;
+let currentSholat = 0;
 
-function showNext() {
-    // Fade out
-    box.style.opacity = 0;
+startWelcome();
 
-    setTimeout(() => {
-        // Update teks
-        box.textContent = jadwal[idx];
+// =============================
+// MODE SELAMAT DATANG
+// =============================
+function startWelcome() {
+    runText.classList.remove("fade");
+    runText.classList.add("marquee");
+    runText.classList.remove("centered");
+    runText.innerText = welcomeText;
 
-        // Fade in
-        box.style.opacity = 1;
+    welcomeCount = 0;
 
-        idx++;
+    let interval = setInterval(() => {
+        welcomeCount++;
 
-        // Jika selesai semua → pindah runteks 3
-        if (idx >= jadwal.length) {
-            setTimeout(() => {
-                window.location.href = "runteks3.html";
-            }, 3500);
+        if (welcomeCount >= 5) {
+            clearInterval(interval);
+            runText.classList.remove("marquee");
+            runText.classList.add("centered"); // ⬅ kembali ke tengah
+            startJadwal();
         }
-    }, 800);
+    }, 8000);
 }
 
-// Mulai tampilan pertama
-showNext();
+// =============================
+// MODE JADWAL SHOLAT
+// =============================
+function startJadwal() {
+    currentSholat = 0;
+    changeSholat();
 
-// Ganti setiap 4 detik
-setInterval(() => {
-    if (idx < jadwal.length) showNext();
-}, 4000);
+    let sholatInterval = setInterval(() => {
+        currentSholat++;
 
+        if (currentSholat >= jadwalSholat.length) {
+            clearInterval(sholatInterval);
+            startWelcome();
+            return;
+        }
+
+        changeSholat();
+
+    }, 5000);
+}
+
+function changeSholat() {
+    runText.classList.add("fade");
+    runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[currentSholat];
+
+    setTimeout(() => {
+        runText.classList.remove("fade");
+    }, 5000);
+}

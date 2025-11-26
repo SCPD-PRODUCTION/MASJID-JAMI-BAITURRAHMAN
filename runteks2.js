@@ -1,6 +1,7 @@
 // Data jadwal sholat
 const jadwalSholat = [
     "Subuh : 04.30 WIB",
+    "Dhuha : 06.00 WIB",
     "Dzuhur : 11.45 WIB",
     "Ashar : 15.10 WIB",
     "Maghrib : 17.55 WIB",

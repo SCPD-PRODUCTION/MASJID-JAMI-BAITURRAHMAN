@@ -11,55 +11,53 @@ let jadwalSholat = [
     "Isya 19:00"
 ];
 
-// Counter SELAMAT DATANG
 let welcomeCount = 0;
-
-// Mode sistem
-let mode = "welcome";  // welcome → jadwal → welcome…
-
 let currentSholat = 0;
 
-// MULAI RUNTEKS
 startWelcome();
 
+// =============================
+// MODE SELAMAT DATANG
+// =============================
 function startWelcome() {
-    mode = "welcome";
-    runText.innerText = welcomeText;
     runText.classList.remove("fade");
     runText.classList.add("marquee");
+    runText.classList.remove("centered");
+    runText.innerText = welcomeText;
+
+    welcomeCount = 0;
 
     let interval = setInterval(() => {
         welcomeCount++;
 
         if (welcomeCount >= 5) {
-            // STOP WELCOME
             clearInterval(interval);
             runText.classList.remove("marquee");
-            runText.style.left = "0";  // diam di tengah
+            runText.classList.add("centered"); // ⬅ kembali ke tengah
             startJadwal();
         }
-    }, 8000); // 8 detik = durasi marquee
+    }, 8000);
 }
 
+// =============================
+// MODE JADWAL SHOLAT
+// =============================
 function startJadwal() {
-    mode = "jadwal";
+    currentSholat = 0;
     changeSholat();
 
     let sholatInterval = setInterval(() => {
         currentSholat++;
 
-        // Jika semua jadwal selesai → balik ulang lagi ke welcome
         if (currentSholat >= jadwalSholat.length) {
             clearInterval(sholatInterval);
-            currentSholat = 0;
-            welcomeCount = 0;
             startWelcome();
             return;
         }
 
         changeSholat();
 
-    }, 4000); // ganti jadwal setiap 4 detik
+    }, 4000);
 }
 
 function changeSholat() {

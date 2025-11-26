@@ -8,7 +8,7 @@ const jadwalSholat = [
 ];
 
 // Element teks
-const textBox = document.getElementById("runteks1-text");
+const textBox = document.getElementById("runteks2-text");
 
 let index = 0;
 
@@ -21,9 +21,9 @@ function showNextSholat() {
         textBox.style.opacity = 1; // fade in
 
         index = (index + 1) % jadwalSholat.length;
-    }, 1000);
+    }, 4000);
 }
 
 // Start
 showNextSholat();
-setInterval(showNextSholat, 3500);
+setInterval(showNextSholat, 4000);

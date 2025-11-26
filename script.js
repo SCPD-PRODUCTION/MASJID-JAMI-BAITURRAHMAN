@@ -1,4 +1,7 @@
-// DATA SEMENTARA (akan diganti admin)
+const runText = document.getElementById("runteks-text");
+
+const welcomeText = "SELAMAT DATANG DI MASJID JAMI BAITURRAHMAN KEL KEMIRIMUKA";
+
 let jadwalSholat = [
     "Subuh 04:30",
     "Dhuha 06:00",
@@ -8,74 +11,62 @@ let jadwalSholat = [
     "Isya 19:00"
 ];
 
-// Data kajian dari admin
-let kajian = JSON.parse(localStorage.getItem("kajianData")) || [];
+// Counter SELAMAT DATANG
+let welcomeCount = 0;
 
-// Default text
-const defaultRunteks = "SELAMAT DATANG DI MASJID JAMI BAITURRAHMAN KEL KEMIRIMUKA";
+// Mode sistem
+let mode = "welcome";  // welcome → jadwal → welcome…
 
-const runText = document.getElementById("runteks-text");
+let currentSholat = 0;
 
-// SISTEM PERGANTIAN RUNTEKS
-let indexSholat = 0;
-let mode = "default";
+// MULAI RUNTEKS
+startWelcome();
 
-function updateRunteks() {
-    let liveKajian = kajian.find(k => k.linkLive && k.linkLive.trim() !== "");
+function startWelcome() {
+    mode = "welcome";
+    runText.innerText = welcomeText;
+    runText.classList.remove("fade");
+    runText.classList.add("marquee");
 
-    // Jika ada live
-    if (liveKajian) {
-        mode = "live";
-        runText.classList.add("fade");
-        runText.innerText = "KAJIAN LIVE: " + liveKajian.judul.toUpperCase();
-        checkLiveStatus(liveKajian.linkLive);
-        return;
-    }
+    let interval = setInterval(() => {
+        welcomeCount++;
 
-    if (mode === "default") {
-        runText.innerText = defaultRunteks;
-        mode = "sholat";
-    }
-
-    else if (mode === "sholat") {
-        runText.classList.add("fade");
-        runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[indexSholat];
-        indexSholat++;
-
-        if (indexSholat >= jadwalSholat.length) {
-            indexSholat = 0;
-            if (kajian.length > 0) mode = "kajian";
-            else mode = "default";
+        if (welcomeCount >= 5) {
+            // STOP WELCOME
+            clearInterval(interval);
+            runText.classList.remove("marquee");
+            runText.style.left = "0";  // diam di tengah
+            startJadwal();
         }
-    }
+    }, 8000); // 8 detik = durasi marquee
+}
 
-    else if (mode === "kajian") {
-        const randomKajian = kajian[Math.floor(Math.random() * kajian.length)];
-        runText.classList.add("fade");
-        runText.innerText = "KAJIAN: " + randomKajian.judul.toUpperCase();
-        mode = "default";
-    }
+function startJadwal() {
+    mode = "jadwal";
+    changeSholat();
+
+    let sholatInterval = setInterval(() => {
+        currentSholat++;
+
+        // Jika semua jadwal selesai → balik ulang lagi ke welcome
+        if (currentSholat >= jadwalSholat.length) {
+            clearInterval(sholatInterval);
+            currentSholat = 0;
+            welcomeCount = 0;
+            startWelcome();
+            return;
+        }
+
+        changeSholat();
+
+    }, 4000); // ganti jadwal setiap 4 detik
+}
+
+function changeSholat() {
+    runText.classList.add("fade");
+    runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[currentSholat];
 
     setTimeout(() => {
         runText.classList.remove("fade");
     }, 1000);
-}
-
-setInterval(updateRunteks, 5000);
-
-
-// CEK STATUS LIVE
-function checkLiveStatus(url) {
-    let videoId = null;
-
-    if (url.includes("watch?v=")) {
-        videoId = url.split("watch?v=")[1];
-    } else if (url.includes("youtu.be")) {
-        videoId = url.split("youtu.be/")[1];
-    }
-
-    if (!videoId) return;
-
-    // Tanpa YouTube API → fallback waktu 10 menit
-    setTimeout(() => { mode = "default"; }, 600000);
 }

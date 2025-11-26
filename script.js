@@ -11,79 +11,60 @@ let jadwalSholat = [
     "Isya 19:00"
 ];
 
-let countWelcome = 0;
-let idxSholat = 0;
+let welcomeCount = 0;
+let currentSholat = 0;
 
-/* MAIN */
 startWelcome();
 
-/* --- Marquee 1x --- */
-function playMarqueeOnce() {
-    return new Promise(resolve => {
-        // set teks
-        runText.innerText = welcomeText;
+// =============================
+// MODE SELAMAT DATANG
+// =============================
+function startWelcome() {
+    runText.classList.remove("fade");
+    runText.classList.add("marquee");
+    runText.classList.remove("centered");
+    runText.innerText = welcomeText;
 
-        // reset posisi
-        runText.style.transform = "translateX(100vw) translateY(-50%)";
-
-        // restart animasi
-        runText.classList.remove("marquee");
-        void runText.offsetWidth; // reflow
-        runText.classList.add("marquee");
-
-        // selesai animasi
-        runText.addEventListener("animationend", function end() {
-            runText.removeEventListener("animationend", end);
-            resolve();
-        });
-    });
-}
-
-/* --- Selamat datang 5 kali --- */
-async function startWelcome() {
-    countWelcome = 0;
-
-    for (let i = 0; i < 5; i++) {
-        await playMarqueeOnce();
-    }
-
-    // stop marquee → kembali ke tengah
-    runText.classList.remove("marquee");
-    runText.style.transform = "translate(-50%, -50%)";
-    runText.style.left = "50%";
-
-    startJadwal();
-}
-
-/* --- Jadwal sholat --- */
-function startJadwal() {
-    idxSholat = 0;
-    showSholat();
+    welcomeCount = 0;
 
     let interval = setInterval(() => {
-        idxSholat++;
+        welcomeCount++;
 
-        if (idxSholat >= jadwalSholat.length) {
+        if (welcomeCount >= 5) {
             clearInterval(interval);
+            runText.classList.remove("marquee");
+            runText.classList.add("centered"); // ⬅ kembali ke tengah
+            startJadwal();
+        }
+    }, 8000);
+}
+
+// =============================
+// MODE JADWAL SHOLAT
+// =============================
+function startJadwal() {
+    currentSholat = 0;
+    changeSholat();
+
+    let sholatInterval = setInterval(() => {
+        currentSholat++;
+
+        if (currentSholat >= jadwalSholat.length) {
+            clearInterval(sholatInterval);
             startWelcome();
             return;
         }
 
-        showSholat();
+        changeSholat();
+
     }, 4000);
 }
 
-function showSholat() {
-    runText.classList.remove("marquee");
-    runText.classList.remove("fade");
-    void runText.offsetWidth;
+function changeSholat() {
     runText.classList.add("fade");
+    runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[currentSholat];
 
     setTimeout(() => {
-        runText.innerText = "JADWAL SHOLAT: " + jadwalSholat[idxSholat];
-        runText.classList.add("show");
-    }, 80);
-
-    runText.style.transform = "translate(-50%, -50%)";
-    runText.style.left = "50%";
+        runText.classList.remove("fade");
+    }, 1000);
 }

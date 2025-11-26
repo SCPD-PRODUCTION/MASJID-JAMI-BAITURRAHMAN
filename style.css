@@ -37,42 +37,40 @@ nav a:hover {
     width: 100%;
     background: black;
     color: gold;
+    padding: 10px 0;
     overflow: hidden;
     position: relative;
-    height: 32px;              /* lebih kecil biar teks naik */
+    height: 30px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
-/* default: di tengah */
 #runteks-text {
-    position: absolute;
     white-space: nowrap;
-    font-weight: 600;
+    position: absolute;
+    font-weight: bold;
     font-size: 18px;
-    line-height: 18px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
-/* mode marquee */
+/* Animasi marquee */
 .marquee {
-    animation: marqueeAnim 8s linear;
+    animation: marquee 8s linear infinite;
 }
 
-@keyframes marqueeAnim {
-    0%   { transform: translateX(100vw) translateY(-50%); }
-    100% { transform: translateX(-120%) translateY(-50%); }
+@keyframes marquee {
+    from { left: 100%; }
+    to { left: -100%; }
 }
 
-/* efek fade */
+/* Fade effect untuk jadwal sholat */
 .fade {
-    opacity: 0;
-    transition: opacity .6s ease-in-out;
+    animation: fadeEffect 1s ease-in-out;
 }
-.fade.show {
-    opacity: 1;
+
+@keyframes fadeEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Banner */
@@ -90,4 +88,4 @@ nav a:hover {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
-}
+}                                                                                                                                                   ini css nya

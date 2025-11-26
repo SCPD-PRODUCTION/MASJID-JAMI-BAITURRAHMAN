@@ -1,0 +1,20 @@
+body {
+    background: black;
+    margin: 0;
+    padding: 0;
+    color: gold;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#jadwalBox {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}

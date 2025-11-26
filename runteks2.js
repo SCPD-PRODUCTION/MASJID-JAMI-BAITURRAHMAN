@@ -21,14 +21,16 @@ function showNextSholat() {
         textBox.innerText = jadwalSholat[index];
         textBox.style.opacity = 1; // fade in
 
-        index++;
-
-        // Jika semua jadwal sudah tampil → lanjut ke halaman berikutnya
-        if (index >= jadwalSholat.length) {
+        // Jika jadwal sudah sampai "Isya"
+        if (index === jadwalSholat.length - 1) {
+            // Tunggu 3 detik lalu pindah
             setTimeout(() => {
                 window.location.href = "runteks3.html";
-            }, 3000); // jeda sebelum pindah halaman
+            }, 3000);
+            return;
         }
+
+        index++;
 
     }, 800);
 }
@@ -36,9 +38,9 @@ function showNextSholat() {
 // Mulai
 showNextSholat();
 
-// Interval hanya berjalan sampai index < length
+// Interval pindah jadwal setiap 3 detik
 const interval = setInterval(() => {
-    if (index < jadwalSholat.length) {
+    if (index < jadwalSholat.length - 1) {
         showNextSholat();
     } else {
         clearInterval(interval);

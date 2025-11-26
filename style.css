@@ -41,6 +41,8 @@ nav a:hover {
     overflow: hidden;
     position: relative;
     height: 30px;
+
+    /* memastikan posisi tengah */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,16 +53,24 @@ nav a:hover {
     position: absolute;
     font-weight: bold;
     font-size: 18px;
+
+    /* posisi default = TENGAH */
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
 }
 
-/* Animasi marquee */
+/* Mode bergerak (marquee) */
 .marquee {
     animation: marquee 8s linear infinite;
+    left: 100% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* hapus translateX agar bisa jalan */
 }
 
 @keyframes marquee {
     from { left: 100%; }
-    to { left: -100%; }
+    to { left: -200%; }
 }
 
 /* Fade effect untuk jadwal sholat */

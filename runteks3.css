@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+#runteks3-container {
+    background: darkgreen;
+    color: white;
+    padding: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 3px solid gold;
+    border-bottom: 3px solid gold;
+}
+
+#runteks3-text {
+    display: inline-block;
+    animation: run3 10s linear infinite;
+}
+
+@keyframes run3 {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}

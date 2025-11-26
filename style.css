@@ -32,55 +32,44 @@ nav a:hover {
     color: white;
 }
 
-/* RUNTEKS (GANTI SELURUH BAGIAN RUNTEKS LAMA) */
+/* RUNTEKS */
 #runteks-container {
     width: 100%;
     background: black;
     color: gold;
-    padding: 10px 0;
     overflow: hidden;
     position: relative;
-    height: 40px;
+    height: 32px;              /* lebih kecil biar teks naik */
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-/* default: centered (diam) */
+/* default: di tengah */
 #runteks-text {
-    white-space: nowrap;
     position: absolute;
-    font-weight: bold;
+    white-space: nowrap;
+    font-weight: 600;
     font-size: 18px;
-
-    left: 50%;
+    line-height: 18px;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    transition: opacity .4s, transform .2s;
-    will-change: transform, opacity;
 }
 
-/* MARQUEE MODE - gunakan transform translateX */
+/* mode marquee */
 .marquee {
-    /* sebelum menambahkan .marquee, pastikan inline transform diclear (JS) */
     animation: marqueeAnim 8s linear;
-    /* ulang 1 kali berarti kita akan restart animasi 5x via JS (add/remove class) */
-    animation-timing-function: linear;
-    animation-fill-mode: none;
 }
 
-/* keyframes bergerak dari kanan ke kiri (relatif terhadap lebar elemen) */
 @keyframes marqueeAnim {
-    0%   { transform: translateX(100vw); }   /* mulai dari luar kanan viewport */
-    100% { transform: translateX(-100%); }   /* sampai keluar kiri elemen */
+    0%   { transform: translateX(100vw) translateY(-50%); }
+    100% { transform: translateX(-120%) translateY(-50%); }
 }
 
-/* ketika kita ingin animasi looping otomatis (tidak digunakan di sini) */
-/* .marquee.infinite { animation-iteration-count: infinite; } */
-
+/* efek fade */
 .fade {
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity .6s ease-in-out;
 }
 .fade.show {
     opacity: 1;

@@ -32,36 +32,55 @@ nav a:hover {
     color: white;
 }
 
+/* RUNTEKS */
+#runteks-container {
+    width: 100%;
+    background: black;
+    color: gold;
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    height: 30px;
+
+    /* memastikan posisi tengah */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #runteks-text {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     white-space: nowrap;
+    position: absolute;
+    font-weight: bold;
+    font-size: 18px;
+
+    /* posisi default = TENGAH */
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
 }
 
-/* Mode teks DIAM (tengah) */
-.centered {
-    animation: none !important;
-}
-
-/* Mode MARQUEE (jalan) */
+/* Mode bergerak (marquee) */
 .marquee {
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
     animation: marquee 8s linear infinite;
-}
-
-/* Efek pudar jadwal sholat */
-.fade {
-    opacity: 0;
-    transition: opacity 1s;
+    left: 100% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* hapus translateX agar bisa jalan */
 }
 
 @keyframes marquee {
-    0%   { left: 100%; }
-    100% { left: -200%; }
+    from { left: 100%; }
+    to { left: -200%; }
+}
+
+/* Fade effect untuk jadwal sholat */
+.fade {
+    animation: fadeEffect 1s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Banner */

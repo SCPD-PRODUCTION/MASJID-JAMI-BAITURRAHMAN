@@ -22,11 +22,11 @@ function showNextSholat() {
         textBox.style.opacity = 1; // fade in
 
         index = (index + 1) % jadwalSholat.length;
+            setTimeout(() => {
+                window.location.href = "runteks3.html";
     }, 4000);
 }
 
 // Start
 showNextSholat();
 setInterval(showNextSholat, 4000);
-            clearInterval(interval);
-            window.location.href = "runteks3.html";

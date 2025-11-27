@@ -19,7 +19,7 @@ async function loadAgenda() {
 
     } catch (e) {
         // Kalau JSON tidak ada → balik ke runteks1
-        window.location.href = "runteks1.html";
+        window.location.href = "index.html";
     }
 }
 

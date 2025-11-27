@@ -1,7 +1,7 @@
 async function loadAgenda() {
     try {
         // Ambil data agenda dari server (admin upload)
-        let response = await fetch("agenda.json?time=" + Date.now());
+        let response = await fetch("runeks.json?time=" + Date.now());
         let data = await response.json();
 
         let now = new Date();
